@@ -1,0 +1,37 @@
+<div class="row">
+    <div class="col-xs-12">
+        <img 
+        [src]="detailInfo.imagePath" 
+        alt="{{detailInfo.name}}" 
+        class="img-responsive"
+        style="max-height:300px">
+    </div>
+</div>
+<div class="row">
+    <div class="col-xs-12">
+        <h1>{{detailInfo.name}}</h1>
+    </div>
+</div>
+<div class="row">
+    <div class="col-xs-12">
+        <div class="btn-group">
+            <button type="button" class="btn btn-primary dropdown-toggle">Manage Recipe <span
+                    class="caret"></span></button>
+        </div>
+        <ul class="dropdown-menu">
+            <li><a href="#">Add Ingredients to Shopping List</a></li>
+            <li><a href="#">Edut Recipe</a></li>
+            <li><a href="#">Delete Recipe</a></li>
+        </ul>
+    </div>
+</div>
+<div class="row">
+    <div class="col-xs-12">
+        {{detailInfo.description}}
+    </div>
+</div>
+<div class="row">
+    <div class="col-xs-12">
+        Ingredients
+    </div>
+</div>
