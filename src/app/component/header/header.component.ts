@@ -13,7 +13,7 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
+  dropDownMenuBool=false;
   goToNav(selected:string){
     this.navSelected.emit(selected);
   }

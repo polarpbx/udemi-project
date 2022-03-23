@@ -13,11 +13,14 @@
           <li><a class="nav-link" href="#" (click)="goToNav('shopping-list')">Shopping List</a></li>
         </ul>
         <ul class="nav navbar-nav ms-auto">
-            <li class="dropdown">
-                <a href="#" class="dropdown-toggle nav-link" role="button">Manage</a>
-                <ul class="dropdown-menu">
-                    <li><a href="#">Save Data</a></li>
-                    <li><a href="#">Fatch Data</a></li>
+            <li class="dropdown "appDropdown (dropDownMenu)="dropDownMenuBool=$event">
+                <a href="#" class="dropdown-toggle nav-link p-1" role="button">Manage</a>
+                <ul class="dropdown-menu "
+                [ngClass]="{show:dropDownMenuBool}"
+                style="right: 0px;"
+                >
+                    <li><a href="#" class="dropdown-item">Save Data</a></li>
+                    <li><a href="#"class="dropdown-item">Fatch Data</a></li>
                 </ul>
             </li>
         </ul>
