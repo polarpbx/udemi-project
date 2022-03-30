@@ -1,39 +1,39 @@
 <div class="row">
     <div class="col-xs-12">
-        <img [src]="detailInfo.imagePath" alt="{{detailInfo.name}}" class="img-responsive" style="max-height:300px">
+        <img [src]="recipe.imagePath" alt="{{recipe.name}}" class="img-responsive" style="max-height:300px">
     </div>
 </div>
 <div class="row">
     <div class="col-xs-12">
-        <h1>{{detailInfo.name}}</h1>
+        <h1>{{recipe.name}}</h1>
     </div>
 </div>
 <div class="row">
     <div class="col-xs-12">
         <div class="btn-group dropdown" appDropdown (dropDownMenu)="dropDownMenuBool=$event" >
-            <button type="button" class="btn btn-primary dropdown-toggle">Manage Recipe <span class="caret"></span></button>
+            <button type="button" class="btn btn-primary dropdown-toggle" [routerLink]="['new']">Manage Recipe <span class="caret"></span></button>
 
             <ul class="dropdown-menu"
             style="margin-top: 40px;"
             [ngClass]="{show:dropDownMenuBool==true}"
             >
-                <li><a href="#" class="dropdown-item" (click)="addIngredients()">Add Ingredients</a></li>
-                <li><a href="#" class="dropdown-item">Edit Recipe</a></li>
-                <li><a href="#" class="dropdown-item">Delete Recipe</a></li>
+                <li><a  class="dropdown-item" (click)="addIngredients()" style="cursor: pointer;">Add Ingredients</a></li>
+                <li><a  class="dropdown-item" style="cursor: pointer;" [routerLink]="['/recipes',id,'edit']">Edit Recipe</a></li>
+                <li><a  class="dropdown-item" style="cursor: pointer;">Delete Recipe</a></li>
             </ul>
         </div>
     </div>
 </div>
 <div class="row">
     <div class="col-xs-12">
-        {{detailInfo.description}}
+        {{recipe.description}}
     </div>
 </div>
 <div class="row">
     <div class="col-xs-12">
         <ul class="list-group">
             <li class="list-group-item"
-            *ngFor="let ingredient of detailInfo.ingredient"
+            *ngFor="let ingredient of recipe.ingredient"
             >
             {{ingredient.name}} - {{ingredient.amount}}
             </li>

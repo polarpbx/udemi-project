@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { Ingredient } from 'src/app/shared/ingredient.model';
 import {Recipe} from "../../recipe.model";
-import { RecipeService } from '../../recipe.service';
 
 @Component({
   selector: 'app-recipe-item',
@@ -11,12 +11,9 @@ import { RecipeService } from '../../recipe.service';
 export class RecipeItemComponent implements OnInit {
 
   @Input() recipe:Recipe=new Recipe('','','',[new Ingredient('',0)]);
-
-  constructor(private recipeService:RecipeService) { }
+  @Input() id:number=-1;
+  constructor() { }
 
   ngOnInit(): void {
-  }
-  selectDetail(detailInfo:Recipe){
-    this.recipeService.recipeSelected.emit(detailInfo);
   }
 }

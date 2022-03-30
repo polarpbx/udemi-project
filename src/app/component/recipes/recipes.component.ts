@@ -19,7 +19,7 @@ export class RecipesComponent implements OnInit {
     this.recipeServices.recipeSelected
     .subscribe(
       (recipe:Recipe)=>{
-        this.detailInfo=recipe
+        this.detailInfo=recipe;
       }
     );
   }

@@ -9,18 +9,18 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <ul class="navbar-nav">
-          <li><a class="nav-link" href="#" (click)="goToNav('recipe')">Recipes</a></li>
-          <li><a class="nav-link" href="#" (click)="goToNav('shopping-list')">Shopping List</a></li>
+          <li><a class="nav-link" routerLink="recipes" routerLinkActive="active">Recipes</a></li> 
+          <li><a class="nav-link" routerLink="shopping-list" routerLinkActive="active">Shopping List</a></li>
         </ul>
         <ul class="nav navbar-nav ms-auto">
             <li class="dropdown "appDropdown (dropDownMenu)="dropDownMenuBool=$event">
-                <a href="#" class="dropdown-toggle nav-link p-1" role="button">Manage</a>
+                <a class="dropdown-toggle nav-link p-1" role="button">Manage</a>
                 <ul class="dropdown-menu "
                 [ngClass]="{show:dropDownMenuBool}"
                 style="right: 0px;"
                 >
-                    <li><a href="#" class="dropdown-item">Save Data</a></li>
-                    <li><a href="#"class="dropdown-item">Fatch Data</a></li>
+                    <li><a class="dropdown-item" style="cursor: pointer;">Save Data</a></li>
+                    <li><a class="dropdown-item" style="cursor: pointer;">Fatch Data</a></li>
                 </ul>
             </li>
         </ul>

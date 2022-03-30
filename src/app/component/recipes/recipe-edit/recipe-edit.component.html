@@ -1,0 +1,10 @@
+<div *ngIf="editMode">
+    <p>recipe-edit works!</p>
+    <h1>{{recipe.name}}</h1>
+    <img [src]="recipe.imagePath" alt="">
+    <h2>{{recipe.description}}</h2>
+</div>
+<div *ngIf="!editMode">
+    <p>recipe-new works!</p>
+</div>
+
