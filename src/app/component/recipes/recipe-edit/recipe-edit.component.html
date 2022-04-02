@@ -1,10 +1,43 @@
-<div *ngIf="editMode">
-    <p>recipe-edit works!</p>
-    <h1>{{recipe.name}}</h1>
-    <img [src]="recipe.imagePath" alt="">
-    <h2>{{recipe.description}}</h2>
-</div>
-<div *ngIf="!editMode">
-    <p>recipe-new works!</p>
-</div>
+<div class="container">
 
+    <div *ngIf="editMode">
+        <p>recipe-edit works!</p>
+        <h1>{{recipe.name}}</h1>
+        <img [src]="recipe.imagePath" alt="">
+        <h2>{{recipe.description}}</h2>
+    </div>
+    <div *ngIf="!editMode">
+        <p>recipe-new works!!</p>
+
+
+        <div class="row">
+            <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset2">
+
+                <form [formGroup]="projectFormGroup" (ngSubmit)="onFormSubmit()">
+                    <div class="form-group">
+                        <label for="name">Project Name</label>
+                        <input type="text" formControlName="name" id="name" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="text" formControlName="email" id="mail" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="status">Project Status</label>
+                        <select id="status" formControlName="status" class="form-control">Project Status
+                            <option value="stable">stable</option>
+                            <option value="critical">Critical</option>
+                            <option value="finish">Finish</option>
+                        </select>
+                    </div>
+                    <div class="form-group mt-3">
+                        <input type="submit" value="Submit" class="form-control btn btn-success">
+                    </div>
+                </form>
+            </div>
+        </div>
+
+
+    </div>
+
+</div>
