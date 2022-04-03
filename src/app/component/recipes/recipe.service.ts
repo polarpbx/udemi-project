@@ -47,7 +47,6 @@ export class RecipeService{
 
       addIngredientsToShoppingList(ingredients:Ingredient[]){
           this.ShoppingListService.addIngredients(ingredients);
-          console.log(ingredients);
       }
 
       addRecipe(recipe:Recipe){
