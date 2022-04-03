@@ -1,4 +1,5 @@
 import { Injectable } from "@angular/core";
+import { Subject } from "rxjs";
 import { Ingredient } from "src/app/shared/ingredient.model";
 import { Recipe } from "../recipes/recipe.model";
 import { ShoppingListService } from "../shopping-list/shopping-list.service";
@@ -6,6 +7,7 @@ import { ShoppingListService } from "../shopping-list/shopping-list.service";
 
 @Injectable()
 export class RecipeService{
+  recipesChanges = new Subject<Recipe[]>();
 
     private recipes: Recipe[]=[
         new Recipe(
@@ -34,33 +36,6 @@ export class RecipeService{
           new Ingredient('meat',1),
           new Ingredient('French Fries',20)
         ]
-        ),
-        new Recipe(
-          'A Test Recipe',
-           'This is simple a test',
-        'https://static01.nyt.com/images/2021/03/28/dining/mc-shakshuka/mc-shakshuka-articleLarge.jpg',
-        [
-          new Ingredient('meat',1),
-          new Ingredient('French Fries',20)
-        ]
-        ),
-        new Recipe(
-          'A Test Recipe',
-           'This is simple a test',
-        'https://static01.nyt.com/images/2021/03/28/dining/mc-shakshuka/mc-shakshuka-articleLarge.jpg',
-        [
-          new Ingredient('meat',1),
-          new Ingredient('French Fries',20)
-        ]
-        ),
-        new Recipe(
-          'A Test Recipe',
-           'This is simple a test',
-        'https://static01.nyt.com/images/2021/03/28/dining/mc-shakshuka/mc-shakshuka-articleLarge.jpg',
-        [
-          new Ingredient('meat',1),
-          new Ingredient('French Fries',20)
-        ]
         )
       ];
 
@@ -72,5 +47,25 @@ export class RecipeService{
 
       addIngredientsToShoppingList(ingredients:Ingredient[]){
           this.ShoppingListService.addIngredients(ingredients);
+          console.log(ingredients);
+      }
+
+      addRecipe(recipe:Recipe){
+        this.recipes.push(recipe);
+        this.recipesChanges.next(this.recipes.slice());
+      }
+      updateRecipe(index:number,newRecipe:Recipe){
+        this.recipes[index]=newRecipe;
+        this.recipesChanges.next(this.recipes.slice());
+      }
+
+      removeIngeredient(indexRecipe:number,indexIngredient:number){
+        this.recipes[indexRecipe].ingredient.splice(indexIngredient,1);
+        this.recipesChanges.next(this.recipes.slice());
+      }
+
+      deleteRecipe(index:number){
+        this.recipes.splice(index,1);
+        this.recipesChanges.next(this.recipes.slice());
       }
 }

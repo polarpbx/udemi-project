@@ -11,7 +11,7 @@
 <div class="row">
     <div class="col-xs-12">
         <div class="btn-group dropdown" appDropdown (dropDownMenu)="dropDownMenuBool=$event" >
-            <button type="button" class="btn btn-primary dropdown-toggle" [routerLink]="['new']">Manage Recipe <span class="caret"></span></button>
+            <button type="button" class="btn btn-primary dropdown-toggle" >Manage Recipe <span class="caret"></span></button>
 
             <ul class="dropdown-menu"
             style="margin-top: 40px;"
@@ -19,7 +19,7 @@
             >
                 <li><a  class="dropdown-item" (click)="addIngredients()" style="cursor: pointer;">Add Ingredients</a></li>
                 <li><a  class="dropdown-item" style="cursor: pointer;" [routerLink]="['/recipes',id,'edit']">Edit Recipe</a></li>
-                <li><a  class="dropdown-item" style="cursor: pointer;">Delete Recipe</a></li>
+                <li><a  class="dropdown-item" style="cursor: pointer;" (click)="deleteRecipe()">Delete Recipe</a></li>
             </ul>
         </div>
     </div>

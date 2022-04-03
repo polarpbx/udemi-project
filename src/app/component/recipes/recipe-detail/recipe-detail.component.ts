@@ -1,5 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { ActivatedRoute, Params } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Ingredient } from 'src/app/shared/ingredient.model';
 import {Recipe} from "../recipe.model";
 import { RecipeService } from '../recipe.service';
@@ -12,13 +12,14 @@ import { RecipeService } from '../recipe.service';
 export class RecipeDetailComponent implements OnInit {
 
   dropDownMenuBool:boolean=false;
-  @Input() detailInfo:Recipe=new Recipe('','','',[new Ingredient('',0)]);
-  id:number=-1;
-  recipe:Recipe=new Recipe('','','',[new Ingredient('',0)]);
+  id!:number;
+  recipe!:Recipe;
 
 
   constructor(private recipeService:RecipeService,
-    private route: ActivatedRoute) { 
+    private route: ActivatedRoute,
+    private router: Router
+    ) { 
   }
 
   ngOnInit(): void {
@@ -34,6 +35,10 @@ export class RecipeDetailComponent implements OnInit {
     console.log(event);
   }
   addIngredients(){
-      this.recipeService.addIngredientsToShoppingList(this.detailInfo.ingredient);
+      this.recipeService.addIngredientsToShoppingList(this.recipe.ingredient);
+  }
+  deleteRecipe(){
+    this.recipeService.deleteRecipe(this.id);
+    this.router.navigate(['/recipes']);
   }
 }
