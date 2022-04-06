@@ -19,8 +19,8 @@
                 [ngClass]="{show:dropDownMenuBool}"
                 style="right: 0px;"
                 >
-                    <li><a class="dropdown-item" style="cursor: pointer;">Save Data</a></li>
-                    <li><a class="dropdown-item" style="cursor: pointer;">Fatch Data</a></li>
+                    <li><a class="dropdown-item" style="cursor: pointer;" (click)="onSaveData()">Save Data</a></li>
+                    <li><a class="dropdown-item" style="cursor: pointer;"(click)="onFatchData()">Fatch Data</a></li>
                 </ul>
             </li>
         </ul>
