@@ -9,12 +9,14 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <ul class="navbar-nav">
-          <li><a class="nav-link" routerLink="recipes" routerLinkActive="active">Recipes</a></li> 
+          <li><a class="nav-link" routerLink="recipes" routerLinkActive="active" *ngIf="isAuthenticated">Recipes</a></li> 
           <li><a class="nav-link" routerLink="shopping-list" routerLinkActive="active">Shopping List</a></li>
+          <li><a class="nav-link" routerLink="auth" routerLinkActive="active"*ngIf="!isAuthenticated">Authentication</a></li>
         </ul>
         <ul class="nav navbar-nav ms-auto">
+          <li><a class="nav-link" style="cursor: pointer;"*ngIf="isAuthenticated" (click)="onLogout()">Logout</a></li>
             <li class="dropdown "appDropdown (dropDownMenu)="dropDownMenuBool=$event">
-                <a class="dropdown-toggle nav-link p-1" role="button">Manage</a>
+                <a class="dropdown-toggle nav-link " role="button"*ngIf="isAuthenticated">Manage</a>
                 <ul class="dropdown-menu "
                 [ngClass]="{show:dropDownMenuBool}"
                 style="right: 0px;"

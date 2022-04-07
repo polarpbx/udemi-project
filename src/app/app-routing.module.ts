@@ -8,18 +8,20 @@ import {ShoppingEditComponent} from '../app/component/shopping-list/shopping-edi
 import { NgModule } from '@angular/core';
 import { RecipeEditComponent } from './component/recipes/recipe-edit/recipe-edit.component';
 import { RecipesResolveService } from './component/recipes/recipes-resolve.service';
+import { AuthComponent } from './auth/auth.component';
+import { AuthGuard } from './auth/auth.guard';
 
 
 
 const appRoutes: Routes=[
-    {path:'', redirectTo:'/recipes', pathMatch:'full'},
-    {path:'recipes', component: RecipesComponent, children:[
-        {path:'new', component: RecipeEditComponent},
-        {path:':id', component: RecipeDetailComponent, resolve:[RecipesResolveService]},
-        {path:'list', component: RecipeListComponent, children:[
-            {path:'item', component: RecipeItemComponent}
+    {path:'', redirectTo:'/auth', pathMatch:'full'},
+    {path:'recipes', component: RecipesComponent , canActivate: [AuthGuard], children:[
+        {path:'new', component: RecipeEditComponent, canActivate: [AuthGuard]},
+        {path:':id', component: RecipeDetailComponent, canActivate: [AuthGuard], resolve:[RecipesResolveService]},
+        {path:'list', component: RecipeListComponent, canActivate: [AuthGuard], children:[
+            {path:'item', component: RecipeItemComponent, canActivate: [AuthGuard]}
         ]},
-        {path:':id/edit', component: RecipeEditComponent, resolve:[RecipesResolveService]}
+        {path:':id/edit', component: RecipeEditComponent, resolve:[RecipesResolveService], canActivate: [AuthGuard]}
 
 
     ]},
@@ -27,6 +29,8 @@ const appRoutes: Routes=[
         {path:'edit', component: ShoppingEditComponent},
         
     ]},
+    {path:'auth', component: AuthComponent},
+    {path:'**', redirectTo: '/auth'}
 
 ]
 
